@@ -1,0 +1,16 @@
+{
+    "name": "Audiotter",
+    "rootNamespace": "Audiotter",
+    "references": [
+        "GUID:fc7472598e76a8c4eaf4ec6ba04c54c8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

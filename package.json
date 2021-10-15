@@ -1,0 +1,23 @@
+{
+  "name": "com.jottoworol.audiotter",
+  "version": "1.0.0",
+  "displayName": "Audiotter",
+  "description": "Framework for fast sound integration",
+  "unity": "2020.3",
+  "unityRelease": "16f1",
+  "documentationUrl": "https://example.com/",
+  "changelogUrl": "https://example.com/changelog.html",
+  "licensesUrl": "https://example.com/licensing.html",
+  "dependencies": {
+    "com.unity.modules.audio": "1.0.0"
+ },
+ "keywords": [
+    "audio",
+    "sound"
+  ],
+  "author": {
+    "name": "JottoWorol",
+    "email": "qwerty72.q@yandex.ru",
+    "url": "https://www.unity3d.com"
+  }
+}
