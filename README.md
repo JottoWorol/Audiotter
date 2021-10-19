@@ -1,2 +1,2 @@
-# Audiotter
- Unity framework for fast audio integration
+# Audiotter ![logo](Logo/audiotter_logo.png)
+A Unity fast audio integration framework
