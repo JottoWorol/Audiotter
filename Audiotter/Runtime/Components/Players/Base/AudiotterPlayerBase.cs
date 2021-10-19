@@ -1,13 +1,13 @@
 ﻿using System;
-using Assets.Attributes;
+using Audiotter.Attributes;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Audiotter.Components.Players.Base
+namespace Audiotter.Runtime.Components.Players.Base
 {
     public abstract class AudiotterPlayerBase : MonoBehaviour
     {
-        [Range(0,1f)] public float Volume = 1f;
+        [Range(0, 1f)] public float Volume = 1f;
         [SerializeField] private AudiotterMixerGroup _mixerGroup = AudiotterMixerGroup.Sound;
         [SerializeField] private bool PlayOnAwake;
         [SerializeField] private bool _useCustomMixerGroup;
@@ -15,16 +15,19 @@ namespace Audiotter.Components.Players.Base
         [ShowIf(nameof(_useCustomMixerGroup))] [SerializeField]
         private AudioMixerGroup _customMixerGroup;
 
-        public virtual bool IsPlaying() => false;
+        public virtual bool IsPlaying()
+        {
+            return false;
+        }
 
         public virtual void Play()
         {
-            if(!_isInitialized)
+            if (!_isInitialized)
                 Initialize();
         }
 
         public abstract void Stop();
-        
+
         protected event Action LocalVolumeChanged;
 
         protected virtual void Initialize()
@@ -37,7 +40,7 @@ namespace Audiotter.Components.Players.Base
         {
             if (_useCustomMixerGroup)
                 return _customMixerGroup;
-            
+
             return _mixerGroup switch
             {
                 AudiotterMixerGroup.Music => AudiotterMixer.MusicMixerGroup,
@@ -49,8 +52,8 @@ namespace Audiotter.Components.Players.Base
         private void Awake()
         {
             Initialize();
-            
-            if(PlayOnAwake)
+
+            if (PlayOnAwake)
                 Play();
         }
 
@@ -68,7 +71,7 @@ namespace Audiotter.Components.Players.Base
             Music,
             Sound
         }
-        
+
         private bool _isInitialized;
         private float _previousVolumeValue;
     }

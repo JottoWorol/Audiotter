@@ -1,12 +1,14 @@
-﻿using Assets.Attributes;
+﻿using Audiotter.Attributes;
 using UnityEngine;
 
-namespace Audiotter.Components.Players.Base
+namespace Audiotter.Runtime.Components.Players.Base
 {
     public abstract class AudiotterOneShotBase : AudiotterPlayerBase
     {
         [SerializeField] protected bool _delayed = false;
-        [ShowIf(nameof(_delayed))][SerializeField] protected float _delay = 0;
+
+        [ShowIf(nameof(_delayed))] [SerializeField]
+        protected float _delay = 0;
 
         public override void Play()
         {
@@ -22,13 +24,16 @@ namespace Audiotter.Components.Players.Base
                 PlayOneShot();
             }
         }
-        
+
         public override void Stop()
         {
             _audioSource.Stop();
         }
 
-        public override bool IsPlaying() => _audioSource.isPlaying;
+        public override bool IsPlaying()
+        {
+            return _audioSource.isPlaying;
+        }
 
         protected override void Initialize()
         {
@@ -48,7 +53,7 @@ namespace Audiotter.Components.Players.Base
         private void Update()
         {
             if (!_waitingToPlay) return;
-            
+
             _waitingTimer -= Time.deltaTime;
 
             if (_waitingTimer <= 0)
@@ -60,15 +65,12 @@ namespace Audiotter.Components.Players.Base
 
         private void PlayOneShot()
         {
-            if (TryGetClip(out AudioClip audioClip))
-            {
-                _audioSource.PlayOneShot(audioClip, Volume);
-            }
+            if (TryGetClip(out var audioClip)) _audioSource.PlayOneShot(audioClip, Volume);
         }
 
         private float _waitingTimer;
         private bool _waitingToPlay = false;
-        
+
         private AudioSource _audioSource;
     }
 }

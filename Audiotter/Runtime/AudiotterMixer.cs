@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Audiotter
+namespace Audiotter.Runtime
 {
     public static class AudiotterMixer
     {
@@ -19,7 +19,7 @@ namespace Audiotter
                 UpdateMasterVolume();
             }
         }
-        
+
         public static float SoundVolume
         {
             get => PlayerPrefs.GetFloat(SoundVolumeKey, 1);
@@ -43,7 +43,7 @@ namespace Audiotter
         }
 
         private static AudiotterSettings AudiotterSettings => SettingsLoader.GetSettings();
-        
+
         private static void UpdateMasterVolume()
         {
             Mixer.SetFloat(MasterVolumeKey, ConvertToDb(MasterVolume));
@@ -59,8 +59,10 @@ namespace Audiotter
             Mixer.SetFloat(SoundVolumeKey, ConvertToDb(SoundVolume));
         }
 
-        private static float ConvertToDb(float volume) => 
-            Mathf.Lerp(SettingsLoader.GetSettings().MinVolume, 0f, volume);
+        private static float ConvertToDb(float volume)
+        {
+            return Mathf.Lerp(SettingsLoader.GetSettings().MinVolume, 0f, volume);
+        }
 
         private const string MusicVolumeKey = "AudiotterMusicVolume";
         private const string SoundVolumeKey = "AudiotterSoundVolume";

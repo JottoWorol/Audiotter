@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Audiotter.Components.Players.Base
+namespace Audiotter.Runtime.Components.Players.Base
 {
     public abstract class AudiotterLoopBase : AudiotterPlayerBase
     {
@@ -16,7 +16,10 @@ namespace Audiotter.Components.Players.Base
             AudioSource.Stop();
         }
 
-        public override bool IsPlaying() => AudioSource.isPlaying;
+        public override bool IsPlaying()
+        {
+            return AudioSource.isPlaying;
+        }
 
         protected abstract void TryPlayLoop();
 

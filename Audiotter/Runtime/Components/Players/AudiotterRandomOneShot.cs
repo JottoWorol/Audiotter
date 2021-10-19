@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using Audiotter.Components.Players.Base;
+using Audiotter.Runtime.Components.Players.Base;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Audiotter.Components.Players
+namespace Audiotter.Runtime.Components.Players
 {
     [AddComponentMenu("Audiotter/Players/Audiotter Random OneShot")]
-    public class AudiotterRandomOneShot: AudiotterOneShotBase
+    public class AudiotterRandomOneShot : AudiotterOneShotBase
     {
         [SerializeField] private List<AudioClip> _audioClipBank = new List<AudioClip>();
 

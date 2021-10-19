@@ -1,22 +1,24 @@
 ﻿using System.Collections.Generic;
-using Assets.Attributes;
-using Audiotter.Components.Players.Base;
+using Audiotter.Attributes;
+using Audiotter.Runtime.Components.Players.Base;
 using UnityEngine;
 
-namespace Audiotter.Components.Players
+namespace Audiotter.Runtime.Components.Players
 {
     [AddComponentMenu("Audiotter/Players/Audiotter Random Loop")]
     public class AudiotterRandomLoop : AudiotterLoopBase
     {
         [SerializeField] private List<AudioClip> _audioClipBank = new List<AudioClip>();
         [SerializeField] private bool _changeEveryLoop = false;
-        [ShowIf(nameof(_changeEveryLoop))][SerializeField] private bool _noRepetitions = false;
+
+        [ShowIf(nameof(_changeEveryLoop))] [SerializeField]
+        private bool _noRepetitions = false;
 
         protected override void TryPlayLoop()
         {
             if (_audioClipBank.Count == 0)
                 return;
-            
+
             PlayNextClip();
         }
 
@@ -35,12 +37,12 @@ namespace Audiotter.Components.Players
 
                 if (!_noRepetitions || AudioSource.clip == null || _audioClipBank.Count == 1)
                     return newClip;
-                
+
                 while (true)
                 {
                     if (newClip != AudioSource.clip)
                         return newClip;
-                    
+
                     newClip = GetRandomClip();
                 }
             }
@@ -48,12 +50,15 @@ namespace Audiotter.Components.Players
             _fixedAudioClip ??= GetRandomClip();
             return _fixedAudioClip;
         }
-        
-        private AudioClip GetRandomClip() => _audioClipBank[Random.Range(0, _audioClipBank.Count)];
+
+        private AudioClip GetRandomClip()
+        {
+            return _audioClipBank[Random.Range(0, _audioClipBank.Count)];
+        }
 
         private void Update()
         {
-            if(_isWaitingForStop && !AudioSource.isPlaying)
+            if (_isWaitingForStop && !AudioSource.isPlaying)
                 PlayNextClip();
         }
 

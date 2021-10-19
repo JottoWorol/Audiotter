@@ -1,7 +1,7 @@
-﻿using Audiotter.Components.Players.Base;
+﻿using Audiotter.Runtime.Components.Players.Base;
 using UnityEngine;
 
-namespace Audiotter.Components.Players
+namespace Audiotter.Runtime.Components.Players
 {
     [AddComponentMenu("Audiotter/Players/Audiotter OneShot")]
     public class AudiotterOneShot : AudiotterOneShotBase

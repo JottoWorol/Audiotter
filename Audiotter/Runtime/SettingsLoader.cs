@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Audiotter
+namespace Audiotter.Runtime
 {
     public static class SettingsLoader
     {

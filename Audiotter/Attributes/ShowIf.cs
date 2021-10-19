@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Attributes
+namespace Audiotter.Attributes
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property |
                     AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
@@ -9,17 +9,17 @@ namespace Assets.Attributes
     {
         public string ConditionalSourceField = "";
         public bool HideInInspector = false;
- 
+
         public ShowIf(string conditionalSourceField)
         {
-            this.ConditionalSourceField = conditionalSourceField;
-            this.HideInInspector = false;
+            ConditionalSourceField = conditionalSourceField;
+            HideInInspector = false;
         }
- 
+
         public ShowIf(string conditionalSourceField, bool hideInInspector)
         {
-            this.ConditionalSourceField = conditionalSourceField;
-            this.HideInInspector = hideInInspector;
+            ConditionalSourceField = conditionalSourceField;
+            HideInInspector = hideInInspector;
         }
     }
 }
