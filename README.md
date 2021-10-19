@@ -36,11 +36,11 @@ Add the following line to `Packages/manifest.json`:
 Right after the installation, Audiotter copies its settings to Assets/Resource folder and the package is ready to use.
 
 To add audio to your game just add one of Audiotter's components. They are lying inside Audiotter/Players menu
-[](Screenshots/component_adding.png)
-[](Screenshots/component_list.png)
+![](Screenshots/component_adding.png)
+![](Screenshots/component_list.png)
 
 ### Example of a component added to GameObject
-[](Screenshots/component_example.png)
+![](Screenshots/component_example.png)
 
 
 ### Volume control during runtime
