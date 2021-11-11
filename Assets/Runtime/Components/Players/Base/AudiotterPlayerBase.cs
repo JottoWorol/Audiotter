@@ -1,9 +1,8 @@
 ﻿using System;
-using Audiotter.Attributes;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Audiotter.Runtime.Components.Players.Base
+namespace Assets.Runtime.Components.Players.Base
 {
     public abstract class AudiotterPlayerBase : MonoBehaviour
     {

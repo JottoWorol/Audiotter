@@ -1,7 +1,7 @@
-﻿using Audiotter.Runtime.Components.Players.Base;
+﻿using Assets.Runtime.Components.Players.Base;
 using UnityEngine;
 
-namespace Audiotter.Runtime.Components.Players
+namespace Assets.Runtime.Components.Players
 {
     [AddComponentMenu("Audiotter/Players/Audiotter Loop")]
     public class AudiotterLoop : AudiotterLoopBase

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Audiotter.Runtime
+namespace Assets.Runtime
 {
     [CreateAssetMenu(fileName = "AudiotterSettings", menuName = "Audiotter/Audiotter Settings", order = 1)]
     public class AudiotterSettings : ScriptableObject

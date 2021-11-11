@@ -1,6 +1,6 @@
 {
   "name": "com.jottoworol.audiotter",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "displayName": "Audiotter",
   "description": "A Unity framework for fast sound integration",
   "unity": "2020.3",

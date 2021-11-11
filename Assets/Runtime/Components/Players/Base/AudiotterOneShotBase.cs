@@ -1,8 +1,7 @@
 ﻿using System;
-using Audiotter.Attributes;
 using UnityEngine;
 
-namespace Audiotter.Runtime.Components.Players.Base
+namespace Assets.Runtime.Components.Players.Base
 {
     public abstract class AudiotterOneShotBase : AudiotterPlayerBase
     {

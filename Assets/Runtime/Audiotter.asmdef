@@ -1,9 +1,7 @@
 {
   "name": "Audiotter",
   "rootNamespace": "",
-  "references": [
-    "GUID:fc7472598e76a8c4eaf4ec6ba04c54c8"
-  ],
+  "references": [],
   "includePlatforms": [],
   "excludePlatforms": [],
   "allowUnsafeCode": false,

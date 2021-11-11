@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Audiotter.Editor
+namespace Assets.Editor
 {
     public static class SettingsSetup
     {
