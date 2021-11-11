@@ -1,16 +1,18 @@
 {
-  "name": "Audiotter.Editor",
-  "rootNamespace": "",
-  "references": [
-    "GUID:95afdb7ac46322b4f842aca4d6f1a83c"
-  ],
-  "includePlatforms": [],
-  "excludePlatforms": [],
-  "allowUnsafeCode": false,
-  "overrideReferences": false,
-  "precompiledReferences": [],
-  "autoReferenced": true,
-  "defineConstraints": [],
-  "versionDefines": [],
-  "noEngineReferences": false
+    "name": "Audiotter.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:95afdb7ac46322b4f842aca4d6f1a83c"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
