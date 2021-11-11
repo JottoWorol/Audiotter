@@ -5,6 +5,9 @@ namespace Audiotter.Runtime
 {
     public static class AudiotterMixer
     {
+        private const string MusicVolumeKey = "AudiotterMusicVolume";
+        private const string SoundVolumeKey = "AudiotterSoundVolume";
+        private const string MasterVolumeKey = "AudiotterMasterVolume";
         public static AudioMixer Mixer => AudiotterSettings.AudioMixer;
         public static AudioMixerGroup MusicMixerGroup => AudiotterSettings.MusicMixerGroup;
         public static AudioMixerGroup SoundMixerGroup => AudiotterSettings.SoundMixerGroup;
@@ -63,9 +66,5 @@ namespace Audiotter.Runtime
         {
             return Mathf.Lerp(SettingsLoader.GetSettings().MinVolume, 0f, volume);
         }
-
-        private const string MusicVolumeKey = "AudiotterMusicVolume";
-        private const string SoundVolumeKey = "AudiotterSoundVolume";
-        private const string MasterVolumeKey = "AudiotterMasterVolume";
     }
 }

@@ -4,11 +4,11 @@ using UnityEngine;
 namespace Audiotter.Attributes
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property |
-                    AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
+                    AttributeTargets.Class | AttributeTargets.Struct)]
     public class ShowIf : PropertyAttribute
     {
         public string ConditionalSourceField = "";
-        public bool HideInInspector = false;
+        public bool HideInInspector;
 
         public ShowIf(string conditionalSourceField)
         {

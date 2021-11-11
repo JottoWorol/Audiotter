@@ -10,8 +10,8 @@
   "licensesUrl": "https://example.com/licensing.html",
   "dependencies": {
     "com.unity.modules.audio": "1.0.0"
- },
- "keywords": [
+  },
+  "keywords": [
     "audio",
     "sound"
   ],

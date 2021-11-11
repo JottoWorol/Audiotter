@@ -15,6 +15,26 @@ namespace Audiotter.Runtime.Components.Players.Base
         [ShowIf(nameof(_useCustomMixerGroup))] [SerializeField]
         private AudioMixerGroup _customMixerGroup;
 
+        private bool _isInitialized;
+        private float _previousVolumeValue;
+
+        private void Awake()
+        {
+            Initialize();
+
+            if (PlayOnAwake)
+                Play();
+        }
+
+        private void Update()
+        {
+            if (Volume != _previousVolumeValue)
+            {
+                _previousVolumeValue = Volume;
+                LocalVolumeChanged?.Invoke();
+            }
+        }
+
         public virtual bool IsPlaying()
         {
             return false;
@@ -49,30 +69,10 @@ namespace Audiotter.Runtime.Components.Players.Base
             };
         }
 
-        private void Awake()
-        {
-            Initialize();
-
-            if (PlayOnAwake)
-                Play();
-        }
-
-        private void Update()
-        {
-            if (Volume != _previousVolumeValue)
-            {
-                _previousVolumeValue = Volume;
-                LocalVolumeChanged?.Invoke();
-            }
-        }
-
         private enum AudiotterMixerGroup
         {
             Music,
             Sound
         }
-
-        private bool _isInitialized;
-        private float _previousVolumeValue;
     }
 }

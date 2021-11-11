@@ -21,29 +21,5 @@ namespace Audiotter.Editor
             if (!File.Exists(Application.dataPath + "/Resources/AudiotterSettings.asset"))
                 AssetDatabase.CopyAsset(settingsPath, assetPath);
         }
-
-        private static void TryCopySettings()
-        {
-            if (!File.Exists(Application.dataPath + "/Resources/AudiotterSettings.asset"))
-            {
-                if (AssetDatabase.CopyAsset(
-                    "Assets/Audiotter/AudiotterSettings.asset",
-                    "Assets/Resources/AudiotterSettings.asset"))
-                    Debug.Log("Copied Audiotter settings");
-                else
-                    Debug.Log("Failed to copy Audiotter settings");
-            }
-            else
-            {
-                Debug.Log("Already here");
-            }
-        }
-
-        private static void SetVoicingSettings()
-        {
-            var settings = AudioSettings.GetConfiguration();
-            settings.numRealVoices = 4;
-            AudioSettings.Reset(settings);
-        }
     }
 }

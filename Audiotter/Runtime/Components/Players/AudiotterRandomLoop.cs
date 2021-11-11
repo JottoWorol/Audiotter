@@ -9,10 +9,19 @@ namespace Audiotter.Runtime.Components.Players
     public class AudiotterRandomLoop : AudiotterLoopBase
     {
         [SerializeField] private List<AudioClip> _audioClipBank = new List<AudioClip>();
-        [SerializeField] private bool _changeEveryLoop = false;
+        [SerializeField] private bool _changeEveryLoop;
 
         [ShowIf(nameof(_changeEveryLoop))] [SerializeField]
-        private bool _noRepetitions = false;
+        private bool _noRepetitions;
+
+        private AudioClip _fixedAudioClip;
+        private bool _isWaitingForStop;
+
+        private void Update()
+        {
+            if (_isWaitingForStop && !AudioSource.isPlaying)
+                PlayNextClip();
+        }
 
         protected override void TryPlayLoop()
         {
@@ -55,14 +64,5 @@ namespace Audiotter.Runtime.Components.Players
         {
             return _audioClipBank[Random.Range(0, _audioClipBank.Count)];
         }
-
-        private void Update()
-        {
-            if (_isWaitingForStop && !AudioSource.isPlaying)
-                PlayNextClip();
-        }
-
-        private AudioClip _fixedAudioClip;
-        private bool _isWaitingForStop = false;
     }
 }

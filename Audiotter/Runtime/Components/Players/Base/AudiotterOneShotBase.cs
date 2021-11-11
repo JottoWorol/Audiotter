@@ -1,14 +1,33 @@
-﻿using Audiotter.Attributes;
+﻿using System;
+using Audiotter.Attributes;
 using UnityEngine;
 
 namespace Audiotter.Runtime.Components.Players.Base
 {
     public abstract class AudiotterOneShotBase : AudiotterPlayerBase
     {
-        [SerializeField] protected bool _delayed = false;
+        [SerializeField] protected bool _delayed;
 
         [ShowIf(nameof(_delayed))] [SerializeField]
-        protected float _delay = 0;
+        protected float _delay;
+
+        private AudioSource _audioSource;
+
+        private float _waitingTimer;
+        private bool _waitingToPlay;
+
+        private void Update()
+        {
+            if (!_waitingToPlay) return;
+
+            _waitingTimer -= Time.deltaTime;
+
+            if (_waitingTimer <= 0)
+            {
+                PlayOneShot();
+                _waitingToPlay = false;
+            }
+        }
 
         public override void Play()
         {
@@ -50,27 +69,27 @@ namespace Audiotter.Runtime.Components.Players.Base
 
         protected abstract bool TryGetClip(out AudioClip audioClip);
 
-        private void Update()
-        {
-            if (!_waitingToPlay) return;
-
-            _waitingTimer -= Time.deltaTime;
-
-            if (_waitingTimer <= 0)
-            {
-                PlayOneShot();
-                _waitingToPlay = false;
-            }
-        }
-
         private void PlayOneShot()
         {
             if (TryGetClip(out var audioClip)) _audioSource.PlayOneShot(audioClip, Volume);
         }
 
-        private float _waitingTimer;
-        private bool _waitingToPlay = false;
+        public struct Point
+        {
+            public double X { get; set; }
+            public double Y { get; set; }
+            public readonly double Distance => Math.Sqrt(X * X + Y * Y);
 
-        private AudioSource _audioSource;
+            public override readonly string ToString()
+            {
+                return $"({X}, {Y}) is {Distance} from the origin";
+            }
+
+            public void Translate(int xOffset, int yOffset)
+            {
+                X += xOffset;
+                Y += yOffset;
+            }
+        }
     }
 }

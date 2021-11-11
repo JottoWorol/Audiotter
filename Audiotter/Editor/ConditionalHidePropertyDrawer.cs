@@ -1,16 +1,10 @@
 ﻿using Audiotter.Attributes;
+using UnityEditor;
 using UnityEngine;
-using EditorGUI = UnityEditor.EditorGUI;
-using EditorGUIUtility = UnityEditor.EditorGUIUtility;
-using GUI = UnityEngine.GUI;
-using GUIContent = UnityEngine.GUIContent;
-using PropertyDrawer = UnityEditor.PropertyDrawer;
-using Rect = UnityEngine.Rect;
-using SerializedProperty = UnityEditor.SerializedProperty;
 
 namespace Audiotter.Editor
 {
-    [UnityEditor.CustomPropertyDrawer(typeof(ShowIf))]
+    [CustomPropertyDrawer(typeof(ShowIf))]
     public class ConditionalHidePropertyDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -32,8 +26,7 @@ namespace Audiotter.Editor
 
             if (!condHAtt.HideInInspector || enabled)
                 return EditorGUI.GetPropertyHeight(property, label);
-            else
-                return -EditorGUIUtility.standardVerticalSpacing;
+            return -EditorGUIUtility.standardVerticalSpacing;
         }
 
         private bool GetConditionalHideAttributeResult(ShowIf condHAtt, SerializedProperty property)

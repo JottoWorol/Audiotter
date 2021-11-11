@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Audiotter.Runtime.Components.Players.Base;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Audiotter.Runtime.Components.Players
 {

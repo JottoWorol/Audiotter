@@ -4,6 +4,18 @@ namespace Audiotter.Runtime.Components.Players.Base
 {
     public abstract class AudiotterLoopBase : AudiotterPlayerBase
     {
+        protected AudioSource AudioSource;
+
+        private void OnEnable()
+        {
+            LocalVolumeChanged += OnLocalVolumeChanged;
+        }
+
+        private void OnDisable()
+        {
+            LocalVolumeChanged -= OnLocalVolumeChanged;
+        }
+
         public override void Play()
         {
             base.Play();
@@ -31,21 +43,9 @@ namespace Audiotter.Runtime.Components.Players.Base
             base.Initialize();
         }
 
-        private void OnEnable()
-        {
-            LocalVolumeChanged += OnLocalVolumeChanged;
-        }
-
-        private void OnDisable()
-        {
-            LocalVolumeChanged -= OnLocalVolumeChanged;
-        }
-
         private void OnLocalVolumeChanged()
         {
             AudioSource.volume = Volume;
         }
-
-        protected AudioSource AudioSource;
     }
 }
