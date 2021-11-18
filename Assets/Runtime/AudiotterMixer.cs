@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Assets.Runtime
+namespace Audiotter.Assets.Runtime
 {
     public static class AudiotterMixer
     {

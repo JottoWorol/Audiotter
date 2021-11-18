@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
-using Assets.Runtime.Attributes;
 using Assets.Runtime.Components.Players.Base;
+using Audiotter.Assets.Runtime.Attributes;
 using UnityEngine;
 
-namespace Assets.Runtime.Components.Players
+namespace Audiotter.Assets.Runtime.Components.Players
 {
     [AddComponentMenu("Audiotter/Players/Audiotter Random Loop")]
     public class AudiotterRandomLoop : AudiotterLoopBase
     {
-        [Space(10)]
-        [SerializeField] private List<AudioClip> _audioClipBank = new List<AudioClip>();
+        [Space(10)] [SerializeField] private List<AudioClip> _audioClipBank = new List<AudioClip>();
+
         [SerializeField] private bool _changeEveryLoop;
 
         [ShowIf(nameof(_changeEveryLoop))] [SerializeField]

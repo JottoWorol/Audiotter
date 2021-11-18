@@ -1,23 +1,22 @@
 ﻿using System.Collections.Generic;
-using Assets.Runtime.Attributes;
+using Audiotter.Assets.Runtime.Attributes;
 using UnityEngine;
 
 namespace Assets.Runtime.Components.Players.Base
 {
     public abstract class AudiotterOneShotBase : AudiotterPlayerBase
     {
-        [Space(10)]
-        public bool IsDelayed;
+        [Space(10)] public bool IsDelayed;
+
         [Min(0f)] public float Delay;
 
-        [Space(10)]
-        public bool UseMinTimeBetweenShots;
+        [Space(10)] public bool UseMinTimeBetweenShots;
+
         [Min(0f)] public float MinTimeBetweenShots;
 
-        [Space(10)]
-        [Button(nameof(Play))]
-        [SerializeField] private bool _playButton;
-        
+        [Space(10)] [Button(nameof(Play))] [SerializeField]
+        private bool _playButton;
+
         private readonly List<float> _delayTimers = new List<float>();
         private AudioSource _audioSource;
         private float _betweenShotsTimer;
@@ -46,12 +45,14 @@ namespace Assets.Runtime.Components.Players.Base
 
             if (IsDelayed)
             {
-                if(!Application.isPlaying)
+                if (!Application.isPlaying)
                     Debug.LogWarning("Delayed playback is available during playmode only");
                 _delayTimers.Add(Delay);
             }
             else
+            {
                 PlayOneShot();
+            }
         }
 
         public override void Stop()

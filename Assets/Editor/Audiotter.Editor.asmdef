@@ -1,6 +1,6 @@
 {
     "name": "Audiotter.Editor",
-    "rootNamespace": "",
+    "rootNamespace": "Audiotter",
     "references": [
         "GUID:95afdb7ac46322b4f842aca4d6f1a83c"
     ],

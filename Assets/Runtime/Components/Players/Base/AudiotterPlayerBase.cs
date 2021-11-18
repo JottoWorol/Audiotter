@@ -1,5 +1,6 @@
 ﻿using System;
-using Assets.Runtime.Attributes;
+using Audiotter.Assets.Runtime;
+using Audiotter.Assets.Runtime.Attributes;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -11,10 +12,9 @@ namespace Assets.Runtime.Components.Players.Base
         [Range(0, 3f)] public float Pitch = 1f;
         [SerializeField] private AudiotterMixerGroup _mixerGroup = AudiotterMixerGroup.Sound;
         [SerializeField] private bool PlayOnAwake;
-        
-        [Space(10)]
-        [SerializeField] private bool _useCustomMixerGroup;
-        
+
+        [Space(10)] [SerializeField] private bool _useCustomMixerGroup;
+
         [ShowIf(nameof(_useCustomMixerGroup))] [SerializeField]
         private AudioMixerGroup _customMixerGroup;
 

@@ -1,6 +1,6 @@
 {
-    "name": "Audiotter",
-    "rootNamespace": "",
+    "name": "Audiotter.Runtime",
+    "rootNamespace": "Audiotter",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

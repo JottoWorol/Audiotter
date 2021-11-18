@@ -1,9 +1,8 @@
-﻿using Assets.Runtime;
-using Assets.Runtime.Attributes;
+﻿using Audiotter.Assets.Runtime.Attributes;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Editor
+namespace Audiotter.Assets.Editor
 {
     [CustomPropertyDrawer(typeof(ShowIf))]
     public class ConditionalHidePropertyDrawer : PropertyDrawer
