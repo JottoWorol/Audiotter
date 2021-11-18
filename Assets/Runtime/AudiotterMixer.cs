@@ -62,9 +62,7 @@ namespace Assets.Runtime
             Mixer.SetFloat(SoundVolumeKey, ConvertToDb(SoundVolume));
         }
 
-        private static float ConvertToDb(float volume)
-        {
-            return Mathf.Lerp(SettingsLoader.GetSettings().MinVolume, 0f, volume);
-        }
+        private static float ConvertToDb(float volume) =>
+            Mathf.Lerp(SettingsLoader.GetSettings().MinVolume, 0f, volume);
     }
 }

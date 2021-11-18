@@ -9,7 +9,7 @@ namespace Assets.Editor
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            var condHAtt = (ShowIf)attribute;
+            var condHAtt = (ShowIf) attribute;
             var enabled = GetConditionalHideAttributeResult(condHAtt, property);
 
             var wasEnabled = GUI.enabled;
@@ -21,7 +21,7 @@ namespace Assets.Editor
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            var condHAtt = (ShowIf)attribute;
+            var condHAtt = (ShowIf) attribute;
             var enabled = GetConditionalHideAttributeResult(condHAtt, property);
 
             if (!condHAtt.HideInInspector || enabled)
@@ -36,7 +36,8 @@ namespace Assets.Editor
                 property.propertyPath; //returns the property path of the property we want to apply the attribute to
             var conditionPath =
                 propertyPath.Replace(property.name,
-                    condHAtt.ConditionalSourceField); //changes the path to the conditionalsource property path
+                    condHAtt.ConditionalSourceField
+                ); //changes the path to the conditionalsource property path
             var sourcePropertyValue = property.serializedObject.FindProperty(conditionPath);
 
             if (sourcePropertyValue != null)
@@ -44,7 +45,8 @@ namespace Assets.Editor
             else
                 Debug.LogWarning(
                     "Attempting to use a ConditionalHideAttribute but no matching SourcePropertyValue found in object: " +
-                    condHAtt.ConditionalSourceField);
+                    condHAtt.ConditionalSourceField
+                );
 
             return enabled;
         }

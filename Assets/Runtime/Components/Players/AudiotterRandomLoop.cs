@@ -7,6 +7,7 @@ namespace Assets.Runtime.Components.Players
     [AddComponentMenu("Audiotter/Players/Audiotter Random Loop")]
     public class AudiotterRandomLoop : AudiotterLoopBase
     {
+        [Space(10)]
         [SerializeField] private List<AudioClip> _audioClipBank = new List<AudioClip>();
         [SerializeField] private bool _changeEveryLoop;
 
@@ -59,9 +60,6 @@ namespace Assets.Runtime.Components.Players
             return _fixedAudioClip;
         }
 
-        private AudioClip GetRandomClip()
-        {
-            return _audioClipBank[Random.Range(0, _audioClipBank.Count)];
-        }
+        private AudioClip GetRandomClip() => _audioClipBank[Random.Range(0, _audioClipBank.Count)];
     }
 }

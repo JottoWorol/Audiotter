@@ -4,7 +4,8 @@ using UnityEngine;
 namespace Assets.Runtime
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property |
-                    AttributeTargets.Class | AttributeTargets.Struct)]
+                    AttributeTargets.Class | AttributeTargets.Struct
+    )]
     public class ShowIf : PropertyAttribute
     {
         public string ConditionalSourceField = "";

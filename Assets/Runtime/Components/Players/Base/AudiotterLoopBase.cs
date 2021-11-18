@@ -8,12 +8,14 @@ namespace Assets.Runtime.Components.Players.Base
 
         private void OnEnable()
         {
-            LocalVolumeChanged += OnLocalVolumeChanged;
+            VolumeChanged += OnVolumeChanged;
+            PitchChanged += OnPitchChanged;
         }
 
         private void OnDisable()
         {
-            LocalVolumeChanged -= OnLocalVolumeChanged;
+            VolumeChanged -= OnVolumeChanged;
+            PitchChanged -= OnPitchChanged;
         }
 
         public override void Play()
@@ -28,10 +30,7 @@ namespace Assets.Runtime.Components.Players.Base
             AudioSource.Stop();
         }
 
-        public override bool IsPlaying()
-        {
-            return AudioSource.isPlaying;
-        }
+        public override bool IsPlaying() => AudioSource.isPlaying;
 
         protected abstract void TryPlayLoop();
 
@@ -43,9 +42,14 @@ namespace Assets.Runtime.Components.Players.Base
             base.Initialize();
         }
 
-        private void OnLocalVolumeChanged()
+        private void OnVolumeChanged()
         {
             AudioSource.volume = Volume;
+        }
+
+        private void OnPitchChanged()
+        {
+            AudioSource.pitch = Pitch;
         }
     }
 }

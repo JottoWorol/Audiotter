@@ -1,30 +1,37 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Runtime.Components.Players.Base
 {
     public abstract class AudiotterOneShotBase : AudiotterPlayerBase
     {
-        [SerializeField] protected bool _delayed;
+        [Space(10)]
+        public bool IsDelayed;
+        [Min(0f)] public float Delay;
 
-        [ShowIf(nameof(_delayed))] [SerializeField]
-        protected float _delay;
-
+        [Space(10)]
+        public bool UseMinTimeBetweenShots;
+        [Min(0f)] public float MinTimeBetweenShots;
+        
+        private readonly List<float> _delayTimers = new List<float>();
         private AudioSource _audioSource;
-
-        private float _waitingTimer;
-        private bool _waitingToPlay;
+        private float _betweenShotsTimer;
 
         private void Update()
         {
-            if (!_waitingToPlay) return;
+            if (UseMinTimeBetweenShots)
+                _betweenShotsTimer -= Time.deltaTime;
 
-            _waitingTimer -= Time.deltaTime;
-
-            if (_waitingTimer <= 0)
+            if (IsDelayed)
             {
-                PlayOneShot();
-                _waitingToPlay = false;
+                for (var i = 0; i < _delayTimers.Count; i++)
+                {
+                    _delayTimers[i] -= Time.deltaTime;
+                    if (_delayTimers[i] <= 0)
+                        PlayOneShot();
+                }
+
+                ClearZeroDelayTimers();
             }
         }
 
@@ -32,15 +39,10 @@ namespace Assets.Runtime.Components.Players.Base
         {
             base.Play();
 
-            if (_delayed)
-            {
-                _waitingTimer = _delay;
-                _waitingToPlay = true;
-            }
+            if (IsDelayed)
+                _delayTimers.Add(Delay);
             else
-            {
                 PlayOneShot();
-            }
         }
 
         public override void Stop()
@@ -48,10 +50,7 @@ namespace Assets.Runtime.Components.Players.Base
             _audioSource.Stop();
         }
 
-        public override bool IsPlaying()
-        {
-            return _audioSource.isPlaying;
-        }
+        public override bool IsPlaying() => _audioSource.isPlaying;
 
         protected override void Initialize()
         {
@@ -70,24 +69,27 @@ namespace Assets.Runtime.Components.Players.Base
 
         private void PlayOneShot()
         {
-            if (TryGetClip(out var audioClip)) _audioSource.PlayOneShot(audioClip, Volume);
+            _audioSource.pitch = Pitch;
+            if (TryGetClip(out var audioClip))
+                if (_betweenShotsTimer <= 0)
+                {
+                    _audioSource.PlayOneShot(audioClip, Volume);
+
+                    if (UseMinTimeBetweenShots)
+                        _betweenShotsTimer = MinTimeBetweenShots;
+                }
         }
 
-        public struct Point
+        private void ClearZeroDelayTimers()
         {
-            public double X { get; set; }
-            public double Y { get; set; }
-            public readonly double Distance => Math.Sqrt(X * X + Y * Y);
-
-            public override readonly string ToString()
+            foreach (var delayTimer in _delayTimers)
             {
-                return $"({X}, {Y}) is {Distance} from the origin";
-            }
-
-            public void Translate(int xOffset, int yOffset)
-            {
-                X += xOffset;
-                Y += yOffset;
+                if (delayTimer <= 0)
+                {
+                    _delayTimers.Remove(delayTimer);
+                    ClearZeroDelayTimers();
+                    return;
+                }
             }
         }
     }

@@ -1,13 +1,11 @@
 {
   "name": "com.jottoworol.audiotter",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "displayName": "Audiotter",
   "description": "A Unity framework for fast sound integration",
   "unity": "2020.3",
   "unityRelease": "16f1",
-  "documentationUrl": "https://example.com/",
-  "changelogUrl": "https://example.com/changelog.html",
-  "licensesUrl": "https://example.com/licensing.html",
+  "documentationUrl": "https://github.com/JottoWorol/Audiotter/blob/main/README.md",
   "dependencies": {
     "com.unity.modules.audio": "1.0.0"
   },

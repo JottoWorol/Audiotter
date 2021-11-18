@@ -6,6 +6,7 @@ namespace Assets.Runtime.Components.Players
     [AddComponentMenu("Audiotter/Players/Audiotter OneShot")]
     public class AudiotterOneShot : AudiotterOneShotBase
     {
+        [Space(10)]
         [SerializeField] private AudioClip _audioClip;
 
         protected override bool TryGetClip(out AudioClip audioClip)
