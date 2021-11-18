@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Runtime.Attributes;
 using Assets.Runtime.Components.Players.Base;
 using UnityEngine;
 

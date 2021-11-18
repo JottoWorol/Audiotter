@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Runtime.Attributes;
 using UnityEngine;
 
 namespace Assets.Runtime.Components.Players.Base
@@ -12,6 +13,10 @@ namespace Assets.Runtime.Components.Players.Base
         [Space(10)]
         public bool UseMinTimeBetweenShots;
         [Min(0f)] public float MinTimeBetweenShots;
+
+        [Space(10)]
+        [Button(nameof(Play))]
+        [SerializeField] private bool _playButton;
         
         private readonly List<float> _delayTimers = new List<float>();
         private AudioSource _audioSource;
@@ -40,7 +45,11 @@ namespace Assets.Runtime.Components.Players.Base
             base.Play();
 
             if (IsDelayed)
+            {
+                if(!Application.isPlaying)
+                    Debug.LogWarning("Delayed playback is available during playmode only");
                 _delayTimers.Add(Delay);
+            }
             else
                 PlayOneShot();
         }
@@ -60,6 +69,7 @@ namespace Assets.Runtime.Components.Players.Base
             {
                 _audioSource = gameObject.AddComponent<AudioSource>();
                 _audioSource.outputAudioMixerGroup = GetMixerGroup();
+                _audioSource.playOnAwake = false;
             }
 
             base.Initialize();

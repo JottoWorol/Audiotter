@@ -39,6 +39,7 @@ namespace Assets.Runtime.Components.Players.Base
             AudioSource = gameObject.AddComponent<AudioSource>();
             AudioSource.volume = Volume;
             AudioSource.outputAudioMixerGroup = GetMixerGroup();
+            AudioSource.playOnAwake = false;
             base.Initialize();
         }
 
