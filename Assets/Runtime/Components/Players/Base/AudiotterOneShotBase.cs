@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Audiotter.Assets.Runtime.Attributes;
+using Audiotter.Runtime.Attributes;
 using UnityEngine;
 
-namespace Assets.Runtime.Components.Players.Base
+namespace Audiotter.Runtime.Components
 {
     public abstract class AudiotterOneShotBase : AudiotterPlayerBase
     {
@@ -21,8 +21,10 @@ namespace Assets.Runtime.Components.Players.Base
         private AudioSource _audioSource;
         private float _betweenShotsTimer;
 
-        private void Update()
+        protected new void Update()
         {
+            base.Update();
+
             if (UseMinTimeBetweenShots)
                 _betweenShotsTimer -= Time.deltaTime;
 

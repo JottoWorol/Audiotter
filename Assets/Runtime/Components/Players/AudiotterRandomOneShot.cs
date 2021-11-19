@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using Assets.Runtime.Components.Players.Base;
 using UnityEngine;
 
-namespace Audiotter.Assets.Runtime.Components.Players
+namespace Audiotter.Runtime.Components
 {
     [AddComponentMenu("Audiotter/Players/Audiotter Random OneShot")]
     public class AudiotterRandomOneShot : AudiotterOneShotBase

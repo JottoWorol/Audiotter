@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 
-namespace Assets.Runtime.Components.Players.Base
+namespace Audiotter.Runtime.Components
 {
     public abstract class AudiotterLoopBase : AudiotterPlayerBase
     {
-        protected AudioSource AudioSource;
+        protected AudioSource AudioSource { get; private set; }
 
-        private void OnEnable()
+        protected void OnEnable()
         {
             VolumeChanged += OnVolumeChanged;
             PitchChanged += OnPitchChanged;
         }
 
-        private void OnDisable()
+        protected void OnDisable()
         {
             VolumeChanged -= OnVolumeChanged;
             PitchChanged -= OnPitchChanged;

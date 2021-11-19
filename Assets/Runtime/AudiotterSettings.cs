@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Audiotter.Assets.Runtime
+namespace Audiotter.Runtime
 {
-    [CreateAssetMenu(fileName = "AudiotterSettings", menuName = "Audiotter/Audiotter Settings", order = 1)]
+    [CreateAssetMenu(fileName = AssetName, menuName = "Audiotter/Audiotter Settings", order = 1)]
     public class AudiotterSettings : ScriptableObject
     {
-        public static string AssetName = "AudiotterSettings";
+        public const string AssetName = "AudiotterSettings";
         [SerializeField] private AudioMixer _audioMixer;
         [SerializeField] private AudioMixerGroup _soundMixerGroup;
         [SerializeField] private AudioMixerGroup _musicMixerGroup;
-        [SerializeField] private float _minVolume = -80f;
+        [Range(-80f, 0f)] [SerializeField] private float _minVolume = -80f;
 
         public AudioMixer AudioMixer => _audioMixer;
         public AudioMixerGroup SoundMixerGroup => _soundMixerGroup;

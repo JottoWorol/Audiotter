@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Audiotter.Assets.Runtime.Attributes
+namespace Audiotter.Runtime.Attributes
 {
     public class ButtonAttribute : PropertyAttribute
     {

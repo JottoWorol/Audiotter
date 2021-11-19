@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using Assets.Runtime.Components.Players.Base;
-using Audiotter.Assets.Runtime.Attributes;
+using Audiotter.Runtime.Attributes;
 using UnityEngine;
 
-namespace Audiotter.Assets.Runtime.Components.Players
+namespace Audiotter.Runtime.Components
 {
     [AddComponentMenu("Audiotter/Players/Audiotter Random Loop")]
     public class AudiotterRandomLoop : AudiotterLoopBase
@@ -18,10 +17,15 @@ namespace Audiotter.Assets.Runtime.Components.Players
         private AudioClip _fixedAudioClip;
         private bool _isWaitingForStop;
 
-        private void Update()
+        protected new void Update()
         {
+            base.Update();
+
             if (_isWaitingForStop && !AudioSource.isPlaying)
+            {
+                _isWaitingForStop = false;
                 PlayNextClip();
+            }
         }
 
         protected override void TryPlayLoop()

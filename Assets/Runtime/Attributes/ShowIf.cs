@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Audiotter.Assets.Runtime.Attributes
+namespace Audiotter.Runtime.Attributes
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property |
                     AttributeTargets.Class | AttributeTargets.Struct

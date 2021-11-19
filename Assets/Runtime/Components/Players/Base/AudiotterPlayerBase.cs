@@ -1,10 +1,9 @@
 ﻿using System;
-using Audiotter.Assets.Runtime;
-using Audiotter.Assets.Runtime.Attributes;
+using Audiotter.Runtime.Attributes;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Assets.Runtime.Components.Players.Base
+namespace Audiotter.Runtime.Components
 {
     public abstract class AudiotterPlayerBase : MonoBehaviour
     {
@@ -22,7 +21,7 @@ namespace Assets.Runtime.Components.Players.Base
         private float _previousPitchValue;
         private float _previousVolumeValue;
 
-        private void Awake()
+        protected void Awake()
         {
             Initialize();
 
@@ -30,7 +29,7 @@ namespace Assets.Runtime.Components.Players.Base
                 Play();
         }
 
-        private void Update()
+        protected void Update()
         {
             if (Volume != _previousVolumeValue)
             {
@@ -45,7 +44,7 @@ namespace Assets.Runtime.Components.Players.Base
             }
         }
 
-        public virtual bool IsPlaying() => false;
+        public abstract bool IsPlaying();
 
         public virtual void Play()
         {

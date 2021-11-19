@@ -1,8 +1,9 @@
 ﻿using System.IO;
+using Audiotter.Runtime;
 using UnityEditor;
 using UnityEngine;
 
-namespace Audiotter.Assets.Editor
+namespace Audiotter.Editor
 {
     public static class SettingsSetup
     {
@@ -11,15 +12,15 @@ namespace Audiotter.Assets.Editor
         {
             const string assetsFolder = "Assets";
             const string resourceFolder = "Resources";
-            const string fullFolderName = assetsFolder + "/" + resourceFolder;
-            const string assetPath = fullFolderName + "/AudiotterSettings.asset";
-            const string settingsPath = "Packages/com.jottoworol.audiotter/Audiotter/Runtime/AudiotterSettings.asset";
+            const string projectResourcePath = assetsFolder + "/" + resourceFolder;
+            const string localPath = "Packages/com.jottoworol.audiotter/Assets/Runtime";
+            const string settingsName = "/" + AudiotterSettings.AssetName + ".asset";
 
-            if (!AssetDatabase.IsValidFolder(fullFolderName))
+            if (!AssetDatabase.IsValidFolder(projectResourcePath))
                 AssetDatabase.CreateFolder(assetsFolder, resourceFolder);
 
-            if (!File.Exists(Application.dataPath + "/Resources/AudiotterSettings.asset"))
-                AssetDatabase.CopyAsset(settingsPath, assetPath);
+            if (!File.Exists(Application.dataPath + "/" + resourceFolder + settingsName))
+                AssetDatabase.CopyAsset(localPath + settingsName, projectResourcePath + settingsName);
         }
     }
 }

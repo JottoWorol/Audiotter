@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Audiotter.Assets.Runtime
+namespace Audiotter.Runtime
 {
     public static class SettingsLoader
     {
@@ -9,6 +9,7 @@ namespace Audiotter.Assets.Runtime
         public static AudiotterSettings GetSettings()
         {
             _audiotterSettings ??= Resources.Load<AudiotterSettings>(AudiotterSettings.AssetName);
+
             return _audiotterSettings;
         }
     }

@@ -1,8 +1,8 @@
-﻿using Audiotter.Assets.Runtime.Attributes;
+﻿using Audiotter.Runtime.Attributes;
 using UnityEditor;
 using UnityEngine;
 
-namespace Audiotter.Assets.Editor
+namespace Audiotter.Editor
 {
     [CustomPropertyDrawer(typeof(ButtonAttribute))]
     public class ButtonPropertyDrawer : PropertyDrawer
