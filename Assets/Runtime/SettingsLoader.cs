@@ -8,7 +8,8 @@ namespace Audiotter.Runtime
 
         public static AudiotterSettings GetSettings()
         {
-            _audiotterSettings ??= Resources.Load<AudiotterSettings>(AudiotterSettings.AssetName);
+            if(_audiotterSettings == null)
+                _audiotterSettings = Resources.Load<AudiotterSettings>(AudiotterSettings.AssetName);
 
             return _audiotterSettings;
         }

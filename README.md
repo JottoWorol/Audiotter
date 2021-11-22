@@ -4,6 +4,8 @@
 
 A Unity fast audio integration framework.
 
+> Developed and tested with Unity 2020.3.16f1 LTS
+
 Basically, this is just a wrapper on top of basic AudioSource functions, but it provides a few high-level features:
 * Pre-defined independent Mixer Groups. You can attach your audio components to either "Sound" or "Music" Mixer Group (channel).
 * Per-component volume control
