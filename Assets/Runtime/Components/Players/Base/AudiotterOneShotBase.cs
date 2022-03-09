@@ -12,7 +12,7 @@ namespace Audiotter.Runtime.Components
 
         [Space(10)] public bool UseMinTimeBetweenShots;
 
-        [Min(0f)] public float MinTimeBetweenShots;
+        [ShowIf(nameof(UseMinTimeBetweenShots))][Min(0f)] public float MinTimeBetweenShots;
 
         [Space(10)] [Button(nameof(Play))] [SerializeField]
         private bool _playButton;
